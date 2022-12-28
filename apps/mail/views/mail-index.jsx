@@ -1,23 +1,33 @@
-import { MailList } from "../cmps/email-list.jsx"
-import { mailService } from "../services/mail.service.js"
-
 const { useState, useEffect } = React
 
+import { MailFilter } from "../cmps/email-filter.jsx"
+import { MailList } from "../cmps/email-list.jsx"
+
+import { mailService } from "../services/mail.service.js"
+
+
 export function MailIndex() {
-    const [mails, setMails] = useState(null)
+    const [mails, setMails] = useState()
+    const [filterBy, setFilterBy]= useState(mailService.getDefaultFilter())
 
     useEffect(() => {
         loadMails()
-    }, [])
+    }, [filterBy])
 
     function loadMails() {
-        mailService.query().then(mailsToUpdate => {
+        mailService.query(filterBy).then(mailsToUpdate => {
             setMails(mailsToUpdate)
         })
     }
+
+    function onSetFilter(filter){
+        setFilterBy(filter)
+    }
+
     if(!mails)return <div>loading..</div>
-    return <div>
-        mail app
+    return <div className="main-data">
+        <div className="left-nav"></div>
+        <MailFilter onSetFilter={onSetFilter}/>
         {<MailList mails={mails} />}
     </div>
 
