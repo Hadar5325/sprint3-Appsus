@@ -1,6 +1,9 @@
 
+import { noteService } from "../services/note.service.js";
+
+
 export function NoteIndex() {
 
-    return <div>note app</div>
+ console.log('hi from note index:')
 
 }
