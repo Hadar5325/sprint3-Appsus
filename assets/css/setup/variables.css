@@ -1,3 +1,9 @@
-:root {
+
+:root{
+    --clr1:#f4f0fb;
+    --clr2:#cab6eb;
+    --clr3: #fff;
+    --clr4: #202124;
     --main-bg-color: lightblue;
+
 }

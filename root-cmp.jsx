@@ -13,6 +13,7 @@ export function App() {
     return <Router>
         <section className="app">
             <AppHeader />
+
             <Routes>
                 <Route path="/" element={<MailIndex />} />
                 <Route path="/" element={<Home />} />
