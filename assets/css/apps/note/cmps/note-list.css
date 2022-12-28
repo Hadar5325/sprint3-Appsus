@@ -14,14 +14,17 @@ flex-wrap: wrap;
 
 .text-container{
 min-height:10em;
+
     flex-direction: column;
   justify-content: space-around;
 }
 
 .buttons-container {
- flex-direction: column;
+ /* flex-direction: column; */
   opacity: 0;
   transition: opacity 0.2s;
+  /* font-size: 0.5rems; */
+  /* background-color: rgb(173, 117, 43); */
  } 
 
 
@@ -33,5 +36,9 @@ opacity: 1;
 }
 
 
+.buttons-container button {
+background-color: white;
+border:none;
+font-size: 10px;
 
-
+}

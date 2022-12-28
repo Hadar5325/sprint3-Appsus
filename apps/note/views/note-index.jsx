@@ -23,13 +23,26 @@ export function NoteIndex() {
         })
     }
 
+    function onRemoveNote(noteId) {
+        noteService.remove(noteId).then(() => {
+            const updatednotes = notes.filter(note => note.id !== noteId)
+            setNotes(updatednotes)
+            // eventBusService.emit('show-user-msg', {txt: 'noteRemoved', type: 'success'})
+            showSuccessMsg('note removed')
+        })
+            .catch((err) => {
+                console.log('Had issues removing', err)
+                showErrorMsg('Could not remove note, try again please!')
+            })
+    }
+
 
 
 // console.log('notes:',notes)
 return <section>
 <div>hi!</div>
-<NoteEdit/>
-<NoteList notes={notes}/>
+{/* <NoteEdit/> */}
+<NoteList notes={notes} />
 </section>
 
 }
