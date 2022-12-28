@@ -17,9 +17,8 @@ export const noteService = {
 
 function query() {
     console.log('hi from query:')
-    return asyncStorageService
-    .query(NOTE_KEY)
-        .then(notes)
+    return asyncStorageService.query(NOTE_KEY)
+        .then((notes)=>notes)
 }
 
 function get(noteId) {

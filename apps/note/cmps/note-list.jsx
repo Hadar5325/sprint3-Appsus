@@ -2,8 +2,13 @@
 
 
 
-export function NoteList() {
+export function NoteList({notes}) {
 
-    return <div>note list</div>
+    return <ul>
+      {notes.map((note)=>{
+        <li key={note.id}>{note.info.txt}</li>
+      })  }
+
+    </ul>
 
 }
