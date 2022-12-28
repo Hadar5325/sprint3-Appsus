@@ -1,0 +1,37 @@
+.note-list {
+flex-wrap: wrap;
+
+}
+
+.note-list li {
+    /* background-color: aqua; */
+    width: 8em;
+    padding: 1em 1em;
+    margin: 10px;
+    border-radius: 1em;
+    outline: 1px solid rgba(0, 0, 0, 0.418);
+}
+
+.text-container{
+min-height:10em;
+    flex-direction: column;
+  justify-content: space-around;
+}
+
+.buttons-container {
+ flex-direction: column;
+  opacity: 0;
+  transition: opacity 0.2s;
+ } 
+
+
+
+.note-list :hover > .buttons-container {
+opacity: 1;
+
+
+}
+
+
+
+

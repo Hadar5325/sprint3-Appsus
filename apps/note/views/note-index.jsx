@@ -18,8 +18,8 @@ export function NoteIndex() {
 
     function  loadNotes() {
         noteService.query().then(notesToUpdate => {
-            console.log('notesToUpdate :',notesToUpdate )
             setNotes(notesToUpdate)
+            console.log('notes :',notes )
         })
     }
 

@@ -2,9 +2,9 @@
 // import {storageService} from 
 
 import { storageService } from "../../../services/storage.service.js"
-import {asyncStorageService } from '../../../services/async-storage.service.js'
+import { asyncStorageService } from '../../../services/async-storage.service.js'
 
-const NOTE_KEY='noteDB'
+const NOTE_KEY = 'noteDB'
 _makeNotes()
 
 export const noteService = {
@@ -18,7 +18,7 @@ export const noteService = {
 function query() {
     console.log('hi from query:')
     return asyncStorageService.query(NOTE_KEY)
-        .then((notes)=>notes)
+        .then((notes) => notes)
 }
 
 function get(noteId) {
@@ -37,40 +37,43 @@ function save(note) {
     }
 }
 
-function  getEmptyNote(id='', type = '', isPinned = false, info={txt:''}) {
+function getEmptyNote(id = '', type = '', isPinned = false, info = {title:'', txt: '' }) {
     return { id, type, isPinned, info }
 }
 
 
-function _makeNotes (){
+function _makeNotes() {
     console.log('Hi from note service')
-    let notes= storageService.loadFromStorage(NOTE_KEY)
-     if (!notes||!notes.length) notes=[
+    let notes = storageService.loadFromStorage(NOTE_KEY)
+    if (!notes || !notes.length) notes = [
         {
-         id: "n101",
-         type: "note-txt",
-         isPinned: true,
-         info: {
-         txt: "Fullstack Me Baby!"
-         }
+            id: "n101",
+            type: "note-txt",
+            isPinned: true,
+            info: {
+                title: 'what do you want?',
+                txt: "Fullstack Me Baby!"
+            }
         },
         {
-            id: "n101",
+            id: "n102",
             type: "note-txt",
             isPinned: true,
             info: {
-            txt: "hi hi!"
+                title: 'say hello',
+                txt: "hi hi!"
             }
-           },
-           {
-            id: "n101",
+        },
+        {
+            id: "n103",
             type: "note-txt",
             isPinned: true,
             info: {
-            txt: "doing my sprint!"
+                title: 'What am I doin?',
+                txt: "doing my sprint!"
             }
-           }
-        ]
-        storageService.saveToStorage(NOTE_KEY,notes)
+        }
+    ]
+    storageService.saveToStorage(NOTE_KEY, notes)
 }
 
