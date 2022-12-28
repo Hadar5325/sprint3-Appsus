@@ -10,6 +10,7 @@ import { NoteIndex } from "./apps/note/views/note-index.jsx"
 
 
 export function App() {
+    console.log('hi from root-cmp:')
     return <Router>
         <section className="app">
             <AppHeader />
