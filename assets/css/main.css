@@ -24,6 +24,37 @@
 
 /* @import './apps/mail/cmps/mail-list.css'; */
 
+/* mail css */
+/* mail preview */
+*{
+    margin:0;
+}
+.mail-preview{
+    background-color: antiquewhite;
+    border: 1px solid black;
+    padding: 1rem;
+    margin: 1rem;
+}
+/* mail list */
+.mail-list{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+/* mail layout */
+
+.main-data{
+    display: grid;
+    grid-template-columns: 1fr, 3fr;
+    grid-area: 
+    "left-nav main-mails"
+}
+
+.left-nav{
+    grid-area: left-nav;
+}
+
+
 /* notes */
 /* cmps */
 @import './apps/note/cmps/note-list.css'
