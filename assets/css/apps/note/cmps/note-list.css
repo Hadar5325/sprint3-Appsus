@@ -44,8 +44,8 @@ font-size: 10px;
 }
 
 .buttons-container button img{
- max-width: 15%;
- min-width: 15%;
+ max-width: 20%;
+ min-width: 20%;
 }
 
 
@@ -55,7 +55,8 @@ input[type=color]{
 border-radius:50% ;
 padding: 0;
 border: none;
-min-width: 25px;
+max-width: 25px;
+/* width: 10px; */
 
 }
 

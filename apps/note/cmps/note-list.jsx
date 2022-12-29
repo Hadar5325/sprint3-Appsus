@@ -1,7 +1,7 @@
 const { Outlet, Link } = ReactRouterDOM
 const { useEffect } = React
 
-import { NoteEdit } from "../views/note-edit.jsx"
+// import { NoteEdit } from "../views/note-edit.jsx"
 import { NotePreview } from "./note-preview.jsx"
 
 export function NoteList({ notes, onRemoveNote, onChangeBgColor, onEditNote, loadNotes }) {
