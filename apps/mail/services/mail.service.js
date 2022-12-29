@@ -9,6 +9,8 @@ export const mailService = {
     query,
     getDefaultFilter,
     remove,
+    get,
+    save
 }
 
 function getDefaultFilter() {
@@ -74,5 +76,17 @@ function _loggedinUser() {
     return {
         email: 'user@appsus.com',
         fullname: 'mahatma appsus'
+    }
+}
+
+function get(mailId) {
+    return asyncStorageService.get(MAIL_KEY, mailId)
+}
+
+function save(mail) {
+    if (mail.id) {
+        return asyncStorageService.put(MAIL_KEY, mail)
+    } else {
+        return asyncStorageService.post(MAIL_KEY, mail)
     }
 }
