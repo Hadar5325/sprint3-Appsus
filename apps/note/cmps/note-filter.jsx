@@ -1,4 +1,6 @@
+const { useState, useEffect } = React
 
+import { noteService } from "../services/note.service.js"
 
 export function NoteFilter({onSetFilter}){
 
@@ -10,7 +12,7 @@ export function NoteFilter({onSetFilter}){
     }, [filterByToEdit])
 
     function handleChange({ target }) {
-        let { value, name: field, type } = target
+        let { value, name: field } = target
         setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
     }
 
@@ -23,14 +25,15 @@ export function NoteFilter({onSetFilter}){
 
 return <section className="input-container">
     <form onSubmit={onSubmitFilter}>
-<label >Filter   <input type="text" name="info" onChange={(ev)=>handleChange(ev)} /></label>
-<select name="type" onChange={(ev)=>handleChange(ev)} >
+<label >Filter   <input type="text" name="info" onChange={handleChange} /></label>
+<select name="type" onChange={handleChange} >
 <option value="">All</option>
-<option value="txt">text</option>
-<option value="todo">toDo</option>
-<option value="img">Image</option>
-<option value="vid">Video</option>
+<option value="note-txt">text</option>
+<option value="note-todo">toDo</option>
+<option value="note-img">Image</option>
+<option value="note-vid">Video</option>
 </select>
+<button>Filter</button>
 </form>
 {/* <hr /> */}
 </section>

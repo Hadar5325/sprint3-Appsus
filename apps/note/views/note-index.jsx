@@ -12,18 +12,19 @@ export function NoteIndex() {
 
     const [notes, setNotes] = useState([])
     const [bgColor, setBgColor] = useState(null)
+    const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
     const [userMsg, setUserMsg] = useState('')
 
     useEffect(() => {
         loadNotes()
-    }, [])
+    }, [filterBy])
 
     // useEffect(() => {
     //   console.log('bgcolor:',bgColor)  
     // }, [bgColor])
 
     function loadNotes() {
-        noteService.query().then(notesToUpdate => {
+        noteService.query(filterBy).then(notesToUpdate => {
             setNotes(notesToUpdate)
             console.log('notes :', notes)
         })
@@ -60,10 +61,13 @@ export function NoteIndex() {
     }
 
 
+    function onSetFilter(filterByFromFilter) {
+        setFilterBy(filterByFromFilter)
+    }
 
     // console.log('notes:',notes)
     return <section>
-        <NoteFilter/>
+        <NoteFilter onSetFilter={onSetFilter}/>
         <Link className="edit-link" to="/note/edit">Add Note</Link> 
         <NoteList notes={notes} loadNotes={loadNotes} onRemoveNote={onRemoveNote} onChangeBgColor={onChangeBgColor} />
     </section>
