@@ -1,28 +1,28 @@
 const { Outlet, Link } = ReactRouterDOM
+const { useEffect } = React
 
+import { NoteEdit } from "../views/note-edit.jsx"
 import { NotePreview } from "./note-preview.jsx"
 
-export function NoteList({ notes, onRemoveNote, onChangeBgColor, onEditNote }) {
+export function NoteList({ notes, onRemoveNote, onChangeBgColor, onEditNote, loadNotes }) {
+
+  // useEffect(() => loadNotes(), [])
+
   console.log('notes at notelist:', notes)
 
   return <section>
-    <div className="edit-link-container">
-      
-      <Link to="/note"></Link>
-      <Link to="/note/edit">Write a note</Link></div>
-    <Outlet/>
-
-  <ul className="note-list clean-list flex">
-    {notes.map(({ id, info }) => {
-      return < li key={id} >< NotePreview info={info} />
-        <section className='buttons-container flex'>
-        <button onClick={onRemoveNote}>Remove</button>
-          <button onClick={onChangeBgColor}>BG color</button>
-          <button onClick={onEditNote}>EDIT TEXT</button>
+    {/* <NoteEdit loadNotes={loadNotes} /> */}
+    <ul className="note-list clean-list flex">
+      {notes.map(({ id, info }) => {
+        return < li key={id} ><Link key={id} to={`/note/edit/${id}`}>< NotePreview info={info} /></Link>
+          <section className='buttons-container flex'>
+            <button onClick={(ev)=>onRemoveNote(ev,id)}><img src={'./assets/img/trash.svg'}  /></button>
+           <label className="color-label"> <input type="color" onChange={onChangeBgColor}/></label> 
           </section>
-      </li>
-    })}
-  </ul >
+        </li>
+      })}
+    </ul >
   </section>
 
 }
+
