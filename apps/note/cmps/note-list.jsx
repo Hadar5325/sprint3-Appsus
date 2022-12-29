@@ -14,12 +14,12 @@ export function NoteList({ notes, onRemoveNote, onChangeBgColor, onEditNote, loa
     {/* <NoteEdit loadNotes={loadNotes} /> */}
     <ul className="note-list clean-list flex">
       {notes.map(({ id, info }) => {
-        return <Link key={id} to={`/note/edit/${id}`}>< li key={id} >< NotePreview info={info} />
+        return < li key={id} ><Link key={id} to={`/note/edit/${id}`}>< NotePreview info={info} /></Link>
           <section className='buttons-container flex'>
-            <button onClick={(ev)=>onRemoveNote(ev,id)}>Remove</button>
-            {/* <input type="color" /> onClick={onChangeBgColor}>BG color */}
+            <button onClick={(ev)=>onRemoveNote(ev,id)}><img src={'./assets/img/trash.svg'}  /></button>
+           <label className="color-label"> <input type="color" onChange={onChangeBgColor}/></label> 
           </section>
-        </li></Link>
+        </li>
       })}
     </ul >
   </section>
