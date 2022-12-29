@@ -1,9 +1,9 @@
 const { useState, useEffect } = React
-
+const { Link } = ReactRouterDOM
 
 import { noteService } from '../services/note.service.js'
 
-import {NoteEdit } from "../cmps/note-edit.jsx"
+import {NoteEdit } from "./note-edit.jsx"
 import { NoteList } from "../cmps/note-list.jsx"
 
 
@@ -23,7 +23,13 @@ export function NoteIndex() {
         })
     }
 
-    function onRemoveNote(noteId) {
+    function onChangeBgColor(noteId,color){
+
+    }
+
+
+    function onRemoveNote(ev,noteId) {
+        ev.stopPropagation()
         noteService.remove(noteId).then(() => {
             const updatednotes = notes.filter(note => note.id !== noteId)
             setNotes(updatednotes)
@@ -40,9 +46,8 @@ export function NoteIndex() {
 
 // console.log('notes:',notes)
 return <section>
-<div>hi!</div>
-{/* <NoteEdit/> */}
-<NoteList notes={notes} />
+<Link className="edit-link" to="/note/edit">Add Note</Link>
+<NoteList notes={notes}  loadNotes={loadNotes} onRemoveNote={onRemoveNote} onChangeBgColor={onChangeBgColor}  />
 </section>
 
 }

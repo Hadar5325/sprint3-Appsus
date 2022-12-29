@@ -1,0 +1,45 @@
+.edit-link{
+    display: block;
+  font-size: 1.5rem;
+padding: 1rem;
+margin-top: 20px;
+}
+
+
+.note-edit-form {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    max-width: 50vw;
+    gap: 3em;
+    margin-top: 20vh;
+    background-color: #cab6eb;
+    padding:1em 5em;
+    border-radius: 4rem;
+    min-height:40vh ;
+    /* justify-content: space-between; */
+
+}
+
+.note-edit-form h2{
+   /* padding-top: 1em; */
+}
+
+.note-edit-form button {
+    background-color: inherit;
+    font-family: googleSans;
+    font-size: 1.5em;
+ border: none;
+ padding: 0;
+ cursor: pointer;
+}
+
+.note-edit-form a{
+    font-size: 1.5em;
+    padding: 0;
+}
+
+.edit-buttons-container{
+    display: flex;
+    gap:2em
+}
