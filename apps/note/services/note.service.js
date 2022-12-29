@@ -57,7 +57,6 @@ function getDefaultFilter() {
 
 
 function _makeNotes() {
-    console.log('Hi from note service')
     let notes = storageService.loadFromStorage(NOTE_KEY)
     if (!notes || !notes.length) notes = [
         {

@@ -25,14 +25,23 @@ export function MailIndex() {
         setFilterBy(filter)
     }
 
+    function onRemove(mailId) {
+        mailService.remove(mailId).then(() => {
+            const updateMails = mails.filter(mail => mailId !== mail.id)
+            setMails(updateMails)
+        }).catch((err) => {
+            console.log('error deleting mail', err)
+        })
+    }
+
     if (!mails) return <div>loading..</div>
     return <div>
-            {/* <MailFilter onSetFilter={onSetFilter} /> */}
-            <div className="main-data">
+        <MailFilter onSetFilter={onSetFilter}/>
+        <div className="main-data">
             <div className="left-nav">
                 <UtilsSection />
             </div>
-            {<MailList mails={mails} className="mail-list" />}
+            {<MailList mails={mails} className="mail-list" onRemove={onRemove} />}
         </div>
     </div>
 

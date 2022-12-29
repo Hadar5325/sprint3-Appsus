@@ -8,17 +8,24 @@ _createMails()
 export const mailService = {
     query,
     getDefaultFilter,
+    remove,
+    get,
+    save
 }
 
 function getDefaultFilter() {
     return {
         status: '',
         txt: '',
-        isRead: '',
-        isStared: '',
+        isRead: false,
+        isStared: false,
         lables: []
     }
 
+}
+
+function remove(carId) {
+    return asyncStorageService.remove(MAIL_KEY, carId)
 }
 
 // function query(filterBy = getDefaultFilter()){
@@ -31,17 +38,15 @@ function query(filterBy) {
         .then(mails => {
             console.log(filterBy)
             if (filterBy.txt) {
-                console.log('inside')
                 mails = mails.filter(mail => {
+                    console.log(mail.subject)
                     const mailSubject = mail.subject.toLowerCase()
-                    if (mailSubject.includes(filterBy)) return mail
+                    if (mailSubject.includes(filterBy.txt)) return mail
                 })
             }
             return mails
         })
 }
-
-
 
 function _createMails() {
 
@@ -64,5 +69,24 @@ function _createMail(subject, body, isRead, sentAt, to) {
         isRead,
         sentAt,
         to
+    }
+}
+
+function _loggedinUser() {
+    return {
+        email: 'user@appsus.com',
+        fullname: 'mahatma appsus'
+    }
+}
+
+function get(mailId) {
+    return asyncStorageService.get(MAIL_KEY, mailId)
+}
+
+function save(mail) {
+    if (mail.id) {
+        return asyncStorageService.put(MAIL_KEY, mail)
+    } else {
+        return asyncStorageService.post(MAIL_KEY, mail)
     }
 }

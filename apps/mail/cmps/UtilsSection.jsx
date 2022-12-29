@@ -1,4 +1,5 @@
-
+const {useState} = React
+const {Link} = ReactRouterDOM
 
 export function UtilsSection() {
     return <div>
@@ -7,6 +8,10 @@ export function UtilsSection() {
             <div role='button'>New email</div>
             {/* <button className="add-new-email">New Email</button> */}
         </div>
+        {/* <Link className="left-thing" > Inbox </Link>
+        <Link className="left-thing"> Starred </Link>
+        <Link className="left-thing"> Sent Mail </Link>
+        <Link className="left-thing"> Drafts </Link> */}
     </div>
 
 }
