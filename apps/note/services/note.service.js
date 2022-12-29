@@ -16,7 +16,6 @@ export const noteService = {
 }
 
 function query() {
-    console.log('hi from query:')
     return asyncStorageService.query(NOTE_KEY)
         .then((notes) => notes)
 }
@@ -43,7 +42,6 @@ function getEmptyNote(id = '', type = '', isPinned = false, info = {title:'', tx
 
 
 function _makeNotes() {
-    console.log('Hi from note service')
     let notes = storageService.loadFromStorage(NOTE_KEY)
     if (!notes || !notes.length) notes = [
         {

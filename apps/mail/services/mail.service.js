@@ -8,6 +8,7 @@ _createMails()
 export const mailService = {
     query,
     getDefaultFilter,
+    remove,
 }
 
 function getDefaultFilter() {
@@ -19,6 +20,10 @@ function getDefaultFilter() {
         lables: []
     }
 
+}
+
+function remove(carId) {
+    return asyncStorageService.remove(MAIL_KEY, carId)
 }
 
 // function query(filterBy = getDefaultFilter()){
