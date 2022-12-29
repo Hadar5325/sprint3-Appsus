@@ -37,8 +37,8 @@ function save(note) {
     }
 }
 
-function getEmptyNote(id = '', type = '', isPinned = false, info = {title:'', txt: '' }) {
-    return { id, type, isPinned, info }
+function getEmptyNote(id = '', type = '', isPinned = false, info = {title:'', txt: '' },color='white') {
+    return { id, type, isPinned, info,color }
 }
 
 
@@ -50,6 +50,7 @@ function _makeNotes() {
             id: "n101",
             type: "note-txt",
             isPinned: true,
+            color:'white',
             info: {
                 title: 'what do you want?',
                 txt: "Fullstack Me Baby!"
@@ -59,6 +60,7 @@ function _makeNotes() {
             id: "n102",
             type: "note-txt",
             isPinned: true,
+            color:'white',
             info: {
                 title: 'say hello',
                 txt: "hi hi!"
@@ -68,6 +70,7 @@ function _makeNotes() {
             id: "n103",
             type: "note-txt",
             isPinned: true,
+            color:'white',
             info: {
                 title: 'What am I doin?',
                 txt: "doing my sprint!"
