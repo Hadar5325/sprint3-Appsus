@@ -36,7 +36,7 @@ export function MailIndex() {
 
     if (!mails) return <div>loading..</div>
     return <div>
-        <MailFilter onSetFilter={onSetFilter} />
+        <MailFilter onSetFilter={onSetFilter}/>
         <div className="main-data">
             <div className="left-nav">
                 <UtilsSection />

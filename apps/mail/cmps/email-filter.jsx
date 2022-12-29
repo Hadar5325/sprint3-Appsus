@@ -7,15 +7,15 @@ export function MailFilter({ onSetFilter }) {
 
     const [filterByToEdit, setFilterByToEdit] = useState(mailService.getDefaultFilter())
 
-    useEffect(() => {
+    useEffect(()=>{
         onSetFilter(filterByToEdit)
-    }, [filterByToEdit])
+    },[filterByToEdit])
+
+
 
     function handelChange({ target }) {
-
-        let { status, txt, isRead, isStared, lables } = target
-        // save what the use typed
-        setFilterByToEdit(target.value)
+        let {value} = target
+        setFilterByToEdit((prevFilter) => ({...prevFilter , txt: value}))
     }
 
     return <section>
@@ -27,7 +27,7 @@ export function MailFilter({ onSetFilter }) {
                 name="txt"
                 placeholder="Search"
                 onChange={handelChange}
-                value= {filterByToEdit.subject}
+                value= {filterByToEdit.txt}
             />
         </form>
     </section>

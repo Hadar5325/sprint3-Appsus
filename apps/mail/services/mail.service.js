@@ -15,8 +15,8 @@ function getDefaultFilter() {
     return {
         status: '',
         txt: '',
-        isRead: '',
-        isStared: '',
+        isRead: false,
+        isStared: false,
         lables: []
     }
 
@@ -36,17 +36,15 @@ function query(filterBy) {
         .then(mails => {
             console.log(filterBy)
             if (filterBy.txt) {
-                console.log('inside')
                 mails = mails.filter(mail => {
+                    console.log(mail.subject)
                     const mailSubject = mail.subject.toLowerCase()
-                    if (mailSubject.includes(filterBy)) return mail
+                    if (mailSubject.includes(filterBy.txt)) return mail
                 })
             }
             return mails
         })
 }
-
-
 
 function _createMails() {
 
@@ -69,5 +67,12 @@ function _createMail(subject, body, isRead, sentAt, to) {
         isRead,
         sentAt,
         to
+    }
+}
+
+function _loggedinUser() {
+    return {
+        email: 'user@appsus.com',
+        fullname: 'mahatma appsus'
     }
 }
