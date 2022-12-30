@@ -1,17 +1,54 @@
 const { Link } = ReactRouterDOM
-const { useState } = React
+const { useState, useEffect } = React
 
+import { mailService } from "../services/mail.service.js"
 import { MailPreview } from "./email-preview.jsx"
 
 export function MailList({ mails, onRemove }) {
-    // const [numOfUnreadMails, setNumOfUnreadMails] = useState(0)
+    // const [numOfUnreadMails, setNumOfUnreadMails] = useState(mailService.getDefaultFilter())
+    const [numOfUnreadMails, setNumOfUnreadMails] = useState(0)
 
+    useEffect(()=>{
+        console.log("from email list", numOfUnreadMails)
+    }, [numOfUnreadMails])
     // console.log(numOfUnreadMails)
+
+
+
+    function unReadMessage(unReadMessage, mail){
+        // console.log(mail)
+        // console.log(mail.isCountedIfUnRead, "mail.isCountedIfUnRead")
+        if(mail.isCountedIfUnRead) {
+            console.log('not going in!')
+            return 
+        }
+        if(mail.isCountedIfUnRead === false){
+            console.log('inside')
+            // console.log('hi!')
+            mail.isCountedIfUnRead = true
+            mailService.save(mail).then(()=>{
+            })
+            setNumOfUnreadMails((prev)=>{
+                console.log(prev)
+                console.log(prev + unReadMessage)
+                return prev+ unReadMessage
+            })
+        }
+        // setNumOfUnreadMails((prev)=>{
+        //     console.log(unReadMessage, "unread message")
+        //     // return prev + unReadMessage
+        // })
+        // setNumOfUnreadMails((prev)=>{
+        //     console.log(prev)
+        // })
+    }
+
+
 
     return <ul className="mail-list">
         {mails.map(mail => <li key={mail.id}>
             {/* {checkIsReadMail(mail.isRead)} */}
-            <MailPreview mail={mail} onRemove={onRemove} />
+            <MailPreview mail={mail} onRemove={onRemove} unReadMessage={unReadMessage}/>
             <Link to={`/mail/${mail.id}`}>Details</Link>
         </li>
         )}
@@ -26,23 +63,7 @@ export function MailList({ mails, onRemove }) {
     //     }
     // }
 }
-    // if(!isReadMail){
-    //     setNumOfUnreadMails((prev)=>{
-    //         numOfUnreadMails = prev + 1
-    //     }
-    // }
 
 
 
-// export function MailList({ mails, onRemove }) {
-//     return <ul className="mail-list">
-//         {mails.map(mail => {
-//             if(!mail.isRead) setNumOfUnreadMails(prev=>prev+1)
-//            return <li key={mail.id}>
-//                 <MailPreview mail={mail} onRemove={onRemove} />
-//                 <Link to={`/mail/${mail.id}`}>Details</Link>
-//             </li>
-//         }
-//         )}
-//     </ul>
-// }
+

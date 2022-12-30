@@ -11,6 +11,8 @@ export function MailIndex() {
     const [mails, setMails] = useState()
     const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
 
+    console.log(filterBy)
+
     useEffect(() => {
         loadMails()
     }, [filterBy])
