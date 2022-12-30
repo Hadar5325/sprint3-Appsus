@@ -20,7 +20,7 @@ function getDefaultFilter() {
         isRead: false,
         isStared: false,
         lables: [],
-        isCountedIfUnRead : false
+        isCountedIfUnRead: false
     }
 
 }
@@ -37,7 +37,7 @@ function remove(carId) {
 function query(filterBy) {
     return asyncStorageService.query(MAIL_KEY)
         .then(mails => {
-            console.log(filterBy)
+            // console.log(DFfilterBy)
             if (filterBy.txt) {
                 mails = mails.filter(mail => {
                     console.log(mail.subject)
@@ -57,7 +57,7 @@ function _createMails() {
         mails = []
         mails.push(_createMail('Miss you! 1', '1 Would love to catch up sometimes', false, 15555555555, '1momo@momo.com', false))
         mails.push(_createMail('Miss you! 2', '2 sometimes', false, 15555555555, '2momo@momo.com', false))
-        mails.push(_createMail('Miss you! 3', '3 catch up sometimes', true, 10, '3@momo.com',false))
+        mails.push(_createMail('Miss you! 3', '3 catch up sometimes', true, 10, '3@momo.com', false))
         storageService.saveToStorage(MAIL_KEY, mails)
     }
 }
@@ -69,7 +69,7 @@ function _createMail(subject, body, isRead, sentAt, to, isCountedIfUnRead) {
         body,
         isRead,
         sentAt,
-        to, 
+        to,
         isCountedIfUnRead
     }
 }

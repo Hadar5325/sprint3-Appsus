@@ -7,7 +7,7 @@ export function MailFilter({ onSetFilter }) {
 
     const [filterByToEdit, setFilterByToEdit] = useState(mailService.getDefaultFilter())
 
-    console.log(filterByToEdit)
+    // console.log(filterByToEdit)
     useEffect(()=>{
         onSetFilter(filterByToEdit)
     },[filterByToEdit])

@@ -19,18 +19,18 @@ export function MailList({ mails, onRemove }) {
         // console.log(mail)
         // console.log(mail.isCountedIfUnRead, "mail.isCountedIfUnRead")
         if(mail.isCountedIfUnRead) {
-            console.log('not going in!')
+            // console.log('not going in!')
             return 
         }
         if(mail.isCountedIfUnRead === false){
-            console.log('inside')
+            // console.log('inside')
             // console.log('hi!')
             mail.isCountedIfUnRead = true
             mailService.save(mail).then(()=>{
             })
             setNumOfUnreadMails((prev)=>{
-                console.log(prev)
-                console.log(prev + unReadMessage)
+                // console.log(prev)
+                // console.log(prev + unReadMessage)
                 return prev+ unReadMessage
             })
         }
