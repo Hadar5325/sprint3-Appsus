@@ -1,5 +1,7 @@
 const { useState, useEffect } = React
+const { Link, Outlet } = ReactRouterDOM
 
+import { MailCompose } from "../cmps/email-compose.jsx"
 import { MailFilter } from "../cmps/email-filter.jsx"
 import { MailList } from "../cmps/email-list.jsx"
 import { UtilsSection } from "../cmps/UtilsSection.jsx"
@@ -10,6 +12,8 @@ import { mailService } from "../services/mail.service.js"
 export function MailIndex() {
     const [mails, setMails] = useState()
     const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
+    const [composeMail, setComposeMail] = useState(false)
+    // console.log(filterBy)
 
     useEffect(() => {
         loadMails()
@@ -33,9 +37,19 @@ export function MailIndex() {
             console.log('error deleting mail', err)
         })
     }
+    function onNewMail(){
+        {console.log('hi!')}
+        
+        {setComposeMail(true)}
+        return <Link to="mail/mailCompose"> Add new mail</Link>
+    }
+
 
     if (!mails) return <div>loading..</div>
     return <div>
+        {(composeMail) && <Outlet/>}
+        
+        <button onClick={()=>{onNewMail()}}>Add New Mail </button>
         <MailFilter onSetFilter={onSetFilter}/>
         <div className="main-data">
             <div className="left-nav">
