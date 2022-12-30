@@ -18,7 +18,7 @@ export function MailFilter({ onSetFilter }) {
         setFilterByToEdit((prevFilter) => ({...prevFilter , txt: value}))
     }
 
-    return <section>
+    return <section >
         <form>
             <label htmlFor="searchInput">Search:</label>
             <input

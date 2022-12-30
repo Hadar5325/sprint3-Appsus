@@ -23,8 +23,8 @@ export function NoteFilter({onSetFilter}){
     }
 
 
-return <section className="input-container">
-    <form onSubmit={onSubmitFilter}>
+return <section className="input-container main-layout">
+    <form className="main-layout flex"  onSubmit={onSubmitFilter}>
 <label >Filter   <input type="text" name="info" onChange={handleChange} /></label>
 <select name="type" onChange={handleChange} >
 <option value="">All</option>

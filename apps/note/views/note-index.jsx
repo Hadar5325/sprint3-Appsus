@@ -66,7 +66,7 @@ export function NoteIndex() {
     }
 
     // console.log('notes:',notes)
-    return <section>
+    return <section className="main-layout">
         <NoteFilter onSetFilter={onSetFilter}/>
         <Link className="edit-link" to="/note/edit">Add Note</Link> 
         <NoteList notes={notes} loadNotes={loadNotes} onRemoveNote={onRemoveNote} onChangeBgColor={onChangeBgColor} />
