@@ -3,32 +3,50 @@ const { Link } = ReactRouterDOM
 
 import { noteService } from '../services/note.service.js'
 
-import {NoteEdit } from "./note-edit.jsx"
+import { NoteEdit } from "./note-edit.jsx"
 import { NoteList } from "../cmps/note-list.jsx"
+import {NoteFilter} from "../cmps/note-filter.jsx"
 
 
 export function NoteIndex() {
-  
+
     const [notes, setNotes] = useState([])
+    const [bgColor, setBgColor] = useState(null)
+    const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
     const [userMsg, setUserMsg] = useState('')
 
     useEffect(() => {
         loadNotes()
-    }, [])
+    }, [filterBy])
 
-    function  loadNotes() {
-        noteService.query().then(notesToUpdate => {
+    // useEffect(() => {
+    //   console.log('bgcolor:',bgColor)  
+    // }, [bgColor])
+
+    function loadNotes() {
+        noteService.query(filterBy).then(notesToUpdate => {
             setNotes(notesToUpdate)
-            console.log('notes :',notes )
+            console.log('notes :', notes)
         })
     }
 
-    function onChangeBgColor(noteId,color){
+    function onChangeBgColor(noteId, target) {
+        console.log('noteId,ev:', noteId, target)
+        const color = target.value
+        noteService.get(noteId).then((note) => {
+            note.color = color
+            noteService.save(note)
+            // setBgColor(color)
+            const currNote = notes.find((note) => note.id === noteId)
+            currNote.color = color
+            console.log('notes after changing color:',notes)
+            setNotes(prevNotes=>([...prevNotes]))
+        })
 
     }
 
 
-    function onRemoveNote(ev,noteId) {
+    function onRemoveNote(ev, noteId) {
         ev.stopPropagation()
         noteService.remove(noteId).then(() => {
             const updatednotes = notes.filter(note => note.id !== noteId)
@@ -43,12 +61,16 @@ export function NoteIndex() {
     }
 
 
+    function onSetFilter(filterByFromFilter) {
+        setFilterBy(filterByFromFilter)
+    }
 
-// console.log('notes:',notes)
-return <section>
-<Link className="edit-link" to="/note/edit">Add Note</Link>
-<NoteList notes={notes}  loadNotes={loadNotes} onRemoveNote={onRemoveNote} onChangeBgColor={onChangeBgColor}  />
-</section>
+    // console.log('notes:',notes)
+    return <section>
+        <NoteFilter onSetFilter={onSetFilter}/>
+        <Link className="edit-link" to="/note/edit">Add Note</Link> 
+        <NoteList notes={notes} loadNotes={loadNotes} onRemoveNote={onRemoveNote} onChangeBgColor={onChangeBgColor} />
+    </section>
 
 }
 

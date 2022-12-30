@@ -12,12 +12,23 @@ export const noteService = {
     get,
     remove,
     save,
-    getEmptyNote
+    getEmptyNote,
+    getDefaultFilter
 }
 
-function query() {
+function query(filterBy=getDefaultFilter()) {
+    console.log('hi from query:')
     return asyncStorageService.query(NOTE_KEY)
-        .then((notes) => notes)
+    .then(notes => {
+        if (filterBy.info) {
+            const regex = new RegExp(filterBy.info, 'i')
+            notes = notes.filter(note => regex.test(note.info.txt || note.info.title))
+        }
+        if (filterBy.type) {
+            notes = notes.filter(note => note.type === filterBy.type)
+        }
+        return notes
+    })
 }
 
 function get(noteId) {
@@ -36,8 +47,12 @@ function save(note) {
     }
 }
 
-function getEmptyNote(id = '', type = '', isPinned = false, info = {title:'', txt: '' }) {
-    return { id, type, isPinned, info }
+function getEmptyNote(id = '', type = '', isPinned = false, info = {title:'', txt: '' },color='white') {
+    return { id, type, isPinned, info,color }
+}
+
+function getDefaultFilter() {
+    return { info:{ txt:'', title:''}, type: '' }
 }
 
 
@@ -48,6 +63,7 @@ function _makeNotes() {
             id: "n101",
             type: "note-txt",
             isPinned: true,
+            color:'white',
             info: {
                 title: 'what do you want?',
                 txt: "Fullstack Me Baby!"
@@ -57,6 +73,7 @@ function _makeNotes() {
             id: "n102",
             type: "note-txt",
             isPinned: true,
+            color:'white',
             info: {
                 title: 'say hello',
                 txt: "hi hi!"
@@ -66,6 +83,37 @@ function _makeNotes() {
             id: "n103",
             type: "note-txt",
             isPinned: true,
+            color:'white',
+            info: {
+                title: 'What am I doin?',
+                txt: "doing my sprint!"
+            }
+        },
+        {
+            id: "n104",
+            type: "note-todos",
+            isPinned: true,
+            color:'white',
+            info: {
+                title: 'What am I doin?',
+                txt: "doing my sprint!"
+            }
+        },
+        {
+            id: "n105",
+            type: "note-img",
+            isPinned: true,
+            color:'white',
+            info: {
+                title: 'What am I doin?',
+                txt: "doing my sprint!"
+            }
+        },
+        {
+            id: "n106",
+            type: "note-video",
+            isPinned: true,
+            color:'white',
             info: {
                 title: 'What am I doin?',
                 txt: "doing my sprint!"
