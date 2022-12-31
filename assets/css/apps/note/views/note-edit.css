@@ -44,14 +44,17 @@ margin-top: 20px;
     gap:2em
 }
 
-input[type=text]{
+.note-edit-form input[type=text]{
    font-size: 2rem;
    font-family: googleSans ;
-   border-radius: 2rem;
+   border-radius: 1.5rem;
+   /* background-color: aquamarine; */
 }
 
-textarea{
+.note-edit-form textarea{
     font-size: 1.7rem;
     font-family: googleSans ;
-    border-radius: 2rem;
+    border-radius: 1.5rem;
+    background-color: var (--clr3)
+
 }

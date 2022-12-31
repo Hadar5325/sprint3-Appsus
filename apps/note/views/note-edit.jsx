@@ -49,7 +49,7 @@ function loadNote() {
 
     return <form className="note-edit-form main-layout" onSubmit={onSaveNote}>
          <h2>{noteToEdit.id ? 'Edit this note' : 'Add a new note'}</h2>
-        <input type="text" name="title" placeholder="Title" onChange={onHandleChange} value={noteToEdit.info.title} />
+        <input  type="text" name="title" placeholder="Title" onChange={onHandleChange} value={noteToEdit.info.title} />
         <textarea  name="txt" cols="70" rows="5" onChange={onHandleChange} value={noteToEdit.info.txt}> </textarea>
         <div className="edit-buttons-container">
             <button>{noteToEdit.id ? 'Save' : 'Add'}</button>

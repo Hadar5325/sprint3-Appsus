@@ -1,27 +1,37 @@
 header {
+    position: sticky;
     background: var(--clr2);
-    overflow: hidden;
+    /* overflow: hidden; */
+    /* min-height: 20%; */
 }
 
 /* .app-header { */
-    /* display: flex; */
-    /* justify-content: space-between; */
-    /* height: 48px; */
-    /* padding: 8px; */
+/* display: flex; */
+/* justify-content: space-between; */
+/* height: 48px; */
+/* padding: 8px; */
 /* } */
 
-header img{
+header img {
     width: 250px;
-    transform: translateY(-10px) translateX(-70px) ;
+    transform: translateY(-10px) translateX(-70px);
 }
 
-header nav{
+header nav {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
     margin-right: 30px;
+    right: 0;
+    top: 40px;
+    transform: translateX(150%);
+
+    /* overflow: visible; */
 }
 
-.logo{
-font-size: 2rem;
-margin-left: 30px;
+.logo {
+    font-size: 2rem;
+    margin-left: 30px;
 }
 
 nav a {
@@ -38,3 +48,27 @@ nav a.active {
     text-decoration: overline;
 }
 
+.nav-bars {
+    /* padding: 30px; */
+    /* margin:10px ; */
+    font-size: 3rem;
+    /* min-height: 50px; */
+    width: max-content;
+    background-color: inherit;
+    border: none;
+    margin-right: 20px;
+ 
+}
+
+@media (min-width:800px){
+    .nav-bars {
+        display: none;
+    }
+
+    header nav {
+        position: static;
+        flex-direction: row;
+        transform: translateX(0%);
+    }
+    
+}

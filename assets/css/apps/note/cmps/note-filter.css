@@ -1,6 +1,27 @@
-
-
-.input-container{
+.input-container {
+    /* position: absolute; */
     margin-left: 20px;
-  
+    margin-top: 30px;
+font-size: 2em;
+transform:translateY(-165%) translateX(10%);
+
+/* font-family: googleSans; */
+}
+
+.input-container button {
+    background-color: inherit;
+    margin-left: 10px;
+border-radius: 1em;
+padding:  0.2em ;
+
+}
+
+/* inherit{
+    background-color: inherit;
+} */
+
+.filter-form input[type=text], .filter-form textarea{
+    background-color: var(--clr3);
+    padding: 1em;
+    border-radius: 2em;
 }

@@ -24,16 +24,16 @@ export function NoteFilter({onSetFilter}){
 
 
 return <section className="input-container main-layout">
-    <form className="main-layout flex"  onSubmit={onSubmitFilter}>
-<label >Filter   <input type="text" name="info" onChange={handleChange} /></label>
-<select name="type" onChange={handleChange} >
+    <form className="filter-form main-layout flex"  onSubmit={onSubmitFilter}>
+<label >Filter   <input className="inherit" type="text" name="info" onChange={handleChange} /></label>
+{/* <select name="type" onChange={handleChange} >
 <option value="">All</option>
 <option value="note-txt">text</option>
 <option value="note-todo">toDo</option>
 <option value="note-img">Image</option>
 <option value="note-vid">Video</option>
-</select>
-<button>Filter</button>
+</select> */}
+{/* <button>Filter</button> */}
 </form>
 {/* <hr /> */}
 </section>

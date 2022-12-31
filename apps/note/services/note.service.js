@@ -22,7 +22,7 @@ function query(filterBy=getDefaultFilter()) {
     .then(notes => {
         if (filterBy.info) {
             const regex = new RegExp(filterBy.info, 'i')
-            notes = notes.filter(note => regex.test(note.info.txt || note.info.title))
+            notes = notes.filter(note => regex.test(note.info.txt + note.info.title))
         }
         if (filterBy.type) {
             notes = notes.filter(note => note.type === filterBy.type)
@@ -52,7 +52,7 @@ function getEmptyNote(id = '', type = '', isPinned = false, info = {title:'', tx
 }
 
 function getDefaultFilter() {
-    return { info:{ txt:'', title:''}, type: '' }
+    return { info:'', type: '' }
 }
 
 
