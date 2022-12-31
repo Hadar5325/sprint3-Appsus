@@ -3,6 +3,8 @@ header {
     background: var(--clr2);
     /* overflow: hidden; */
     /* min-height: 20%; */
+    /* padding:0 ;
+    margin: 0; */
 }
 
 /* .app-header { */
@@ -12,14 +14,19 @@ header {
 /* padding: 8px; */
 /* } */
 
+.logo-container{
+    overflow: hidden;
+    max-height: 3rem;
+}
+
 header img {
     width: 250px;
-    transform: translateY(-10px) translateX(-70px);
+    transform: translateY(-15px) translateX(-70px);
 }
 
 header nav {
-    position: absolute;
-    display: flex;
+    position: fixed;
+    display: none;
     flex-direction: column;
     margin-right: 30px;
     right: 0;
@@ -57,6 +64,7 @@ nav a.active {
     background-color: inherit;
     border: none;
     margin-right: 20px;
+    cursor: pointer;
  
 }
 
@@ -68,7 +76,11 @@ nav a.active {
     header nav {
         position: static;
         flex-direction: row;
-        transform: translateX(0%);
+        transform: translateX(0%) ;
+        cursor: pointer;
+        min-height: 30px;
+        display: flex;
+        /* background-color: bisque; */
     }
     
 }

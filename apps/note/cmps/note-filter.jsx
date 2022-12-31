@@ -25,7 +25,7 @@ export function NoteFilter({onSetFilter}){
 
 return <section className="input-container main-layout">
     <form className="filter-form main-layout flex"  onSubmit={onSubmitFilter}>
-<label >Filter   <input className="inherit" type="text" name="info" onChange={handleChange} /></label>
+ <input className="inherit" type="text" name="info" onChange={handleChange} placeholder="Search notes"/>
 {/* <select name="type" onChange={handleChange} >
 <option value="">All</option>
 <option value="note-txt">text</option>

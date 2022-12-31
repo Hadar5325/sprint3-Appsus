@@ -1,9 +1,14 @@
 .input-container {
-    /* position: absolute; */
+    position: absolute;
     margin-left: 20px;
     margin-top: 30px;
 font-size: 2em;
-transform:translateY(-165%) translateX(10%);
+
+top: -20px;
+left: 150px;
+min-width: 50%;
+/* transform:translateY(-210%) */
+ /* translateX(10%); */
 
 /* font-family: googleSans; */
 }
@@ -22,6 +27,9 @@ padding:  0.2em ;
 
 .filter-form input[type=text], .filter-form textarea{
     background-color: var(--clr3);
-    padding: 1em;
+    padding: 0.5em;
     border-radius: 2em;
+    width: 50%;
+    font-family: googleSans;
+    /* font-size: 15rem; */
 }
