@@ -1,0 +1,22 @@
+.app {
+    display: grid;
+    grid-template-columns: 20px 1fr 20px;
+
+}
+
+header{
+    display: grid;
+    grid-template-columns: 20px 1fr 20px;
+
+}
+
+.main-layout {
+    grid-column: 2/2;
+
+}
+
+
+.full {
+    grid-column: 1/4;
+
+}
