@@ -62,8 +62,10 @@ export function MailIndex() {
         <div className="left-nav">
             <UtilsSection />
         </div>
-        <div className="main-emails">
+        <div className="main-contanier-emails">
+            <div className="wrap-mails">
             {<MailList mails={mails} className="mail-list" onRemove={onRemove} />}
+            </div>
         </div>
 
         {/* <div className="left-nav">
