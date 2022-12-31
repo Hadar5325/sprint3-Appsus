@@ -63,18 +63,6 @@ body{
 
 }
 
-.left-nav{
-    grid-area: left-nav;
-    background-color: var(--clr2);
-    /* height: 93.5vh; */
-    
-}
-.mail-list{
-    grid-area: mail;
-    background-color: var(--clr3);
-}
-
-
 /* UtilsSection */
 /* button */
 .div-new-btn{
@@ -113,4 +101,53 @@ body{
 .mail-compose{
     background-color: antiquewhite;
     border: 1px solid black;
+}
+
+
+.total-app{
+    display: grid;
+    grid-template-rows: 48px 1fr;
+    grid-template-areas: 
+    "header"
+    "total-info";
+
+    min-height: 100vh;
+}
+
+.total-info{
+    grid-area: total-info;
+}
+
+.div-main{
+    min-height: 100%;
+    display: grid;
+    grid-template-columns: 187px 1fr;
+    grid-template-areas: 
+    "left-nav   mails";
+
+}
+
+.left-nav{
+    grid-area: left-nav;
+    background-color: rgb(121, 169, 153);
+}
+
+
+.mail-list{
+    grid-area: mails;
+    background-color: var(--clr2);
+    min-height: 100%;
+
+}
+
+
+.app-header{
+    grid-area: header;
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    height: 48px;
+    /* padding: 8px; */
 }

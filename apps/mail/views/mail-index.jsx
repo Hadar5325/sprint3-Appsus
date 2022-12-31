@@ -9,6 +9,8 @@ import { UtilsSection } from "../cmps/UtilsSection.jsx"
 import { mailService } from "../services/mail.service.js"
 
 
+
+
 export function MailIndex() {
     const [mails, setMails] = useState()
     const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
@@ -19,9 +21,9 @@ export function MailIndex() {
         loadMails()
     }, [filterBy])
 
-    useEffect(()=>{
-        if(composeMail) console.log('true!')
-    },[composeMail])
+    useEffect(() => {
+        if (composeMail) console.log('true!')
+    }, [composeMail])
 
     function loadMails() {
         mailService.query(filterBy).then(mailsToUpdate => {
@@ -56,23 +58,24 @@ export function MailIndex() {
     // }
 
     if (!mails) return <div>loading..</div>
-    return <div>
-        <Outlet/>
-        {/* <Link to="/about">wowwwww</Link>  */}
-        <Link to={"/mail/mailCompose"}>wowwwww</Link> 
-
-        {/* {(composeMail) && <Outlet/>} */}
-        {/* <MailCompose /> */}
-        {/* <button onClick={()=>{onNewMail()}}>Add new Mail</button> */}
-        {/* <button onClick={()=>{onNewMail()}}>Add New Mail </button> */}
-        <MailFilter onSetFilter={onSetFilter}/>
-        <div className="main-data">
-            <div className="left-nav">
-                <UtilsSection />
-            </div>
+    return <div className="div-main">
+        <div className="left-nav">
+            <UtilsSection />
+        </div>
+        <div className="main-emails">
             {<MailList mails={mails} className="mail-list" onRemove={onRemove} />}
         </div>
-    </div>
 
+        {/* <div className="left-nav">
+            <Outlet />
+            <MailFilter onSetFilter={onSetFilter} />
+            <div className="main-data">
+                <div className="left-nav">
+                    <UtilsSection />
+                </div>
+                {<MailList mails={mails} className="mail-list" onRemove={onRemove} />}
+            </div>
+        </div> */}
+    </div>
 }
 

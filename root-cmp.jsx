@@ -15,9 +15,11 @@ import { MailCompose } from "./apps/mail/cmps/email-compose.jsx"
 
 export function App() {
     return <Router>
-        <section className="app">
-            <AppHeader />
-            <section className="main main-layout">
+
+        {/* <section className="app"> */}
+        <section className="total-app">
+            <AppHeader className="header" />
+            <section className="total-info">
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<About />} />
