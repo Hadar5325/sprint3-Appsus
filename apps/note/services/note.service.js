@@ -65,35 +65,35 @@ function _makeNotes() {
             isPinned: true,
             color:'white',
             info: {
-                title: 'what do you want?',
-                txt: "Fullstack Me Baby!"
+                title: 'סרטים לא לראות',
+                txt: "תעלת בלאומליך, הסיפור שאינו נגמר, ישמח חתני, משיח, פרסיליה מלכת המדבר, החברה ,Awakening ,נפלאות התבונה ,מה עובר על גלברט גריפ ,סיפורה של שפחה ,בן גוריון אפילוג, שעה  אפלה ,שלטים  "
             }
         },
         {
             id: "n102",
             type: "note-txt",
             isPinned: true,
-            color:'white',
+            color:'#d8ce6b',
             info: {
-                title: 'say hello',
-                txt: "hi hi!"
+                title: 'ציטוטים נבחרים',
+                txt: "אם רעב שונאך האכילהו לחם ואם צמא השקנו מים כי גחלים אתה חותה על ראשו וה' ישלם לך"
             }
         },
         {
             id: "n103",
             type: "note-txt",
             isPinned: true,
-            color:'white',
+            color:'#add8e6',
             info: {
-                title: 'What am I doin?',
-                txt: "doing my sprint!"
+                title: 'דברים לדחות למחר' ,
+                txt: "לעשות כושר, לשלם חשבון חשמל"
             }
         },
         {
             id: "n104",
             type: "note-todos",
             isPinned: true,
-            color:'white',
+            color:'#ffc107',
             info: {
                 title: 'What am I doin?',
                 txt: "doing my sprint!"
@@ -103,20 +103,20 @@ function _makeNotes() {
             id: "n105",
             type: "note-img",
             isPinned: true,
-            color:'white',
+            color:'#ff5722',
             info: {
-                title: 'What am I doin?',
-                txt: "doing my sprint!"
+                title: 'I am a note',
+                txt: "who are you?"
             }
         },
         {
             id: "n106",
             type: "note-video",
             isPinned: true,
-            color:'white',
+            color:'#ffeb3b',
             info: {
-                title: 'What am I doin?',
-                txt: "doing my sprint!"
+                title: 'yep ,I am the last one from storage...',
+                txt: "add some new one! "
             }
         }
     ]
