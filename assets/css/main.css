@@ -154,17 +154,13 @@ body{
     padding: 2rem;
     border: 2px solid green;
 }
-/* .mail-list{ */
-    /* border: 10px solid green; */
-    /* padding: 1rem; */
-    /* height: 100%; */
-/* } */
+
 .mail-list{
     display:block;
     border: 2px solid rgb(89, 41, 222);
-    border-collapse: separate;
+    border-collapse: collapse;
     border-spacing: 4px;
-    /* border-collapse: collapse; */
-    /* border-color: blue 2px solid; */
-    /* background-color: aqua; */
+}
+.each-mail{
+    border: 2px salmon solid;
 }
