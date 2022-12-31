@@ -52,14 +52,14 @@ export function MailList({ mails, onRemove }) {
     // }, mails)
 
     // if(!readyMails) return 
-    return <ul className="mail-list">
-         {mails.map(mail => <li key={mail.id}>
+    return <tbody className="mail-list">
+         {mails.map(mail => <tr className="each-mail mail-preview" key={mail.id}>
             {/* {checkIsReadMail(mail.isRead)} */}
             <MailPreview mail={mail} onRemove={onRemove} unReadMessage={unReadMessage}/>
-            <Link to={`/mail/${mail.id}`}>Details</Link>
-        </li>
+            {/* <Link to={`/mail/${mail.id}`}>Details</Link> */}
+        </tr>
         )}
-    </ul>
+    </tbody>
 
     // function checkIsReadMail(isReadMail) {
     //     console.log(isReadMail)
