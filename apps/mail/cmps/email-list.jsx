@@ -20,8 +20,6 @@ export function MailList({ mails, onRemove }) {
             return 
         }
         if(mail.isCountedIfUnRead === false){
-            // console.log('inside')
-            // console.log('hi!')
             mail.isCountedIfUnRead = true
             mailService.save(mail).then(()=>{
             })

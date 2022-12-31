@@ -1,21 +1,27 @@
 const { useState, useEffect } = React
-const { Link, Outlet } = ReactRouterDOM
+const { Link, Outlet, useParams, useLocation } = ReactRouterDOM
 
 import { MailCompose } from "../cmps/email-compose.jsx"
 import { MailFilter } from "../cmps/email-filter.jsx"
 import { MailList } from "../cmps/email-list.jsx"
+import { MailAppHeader } from "../cmps/mail-app-header.jsx"
 import { UtilsSection } from "../cmps/UtilsSection.jsx"
 
 import { mailService } from "../services/mail.service.js"
-
-
-
 
 export function MailIndex() {
     const [mails, setMails] = useState()
     const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
     const [composeMail, setComposeMail] = useState(false)
-    // console.log(filterBy)
+
+    const { pathname } = useLocation();
+    let isMail = false
+    if (pathname === '/mail') {
+        isMail = true
+    }
+    if (pathname === '/mail/mailCompose') {
+        isMail = false
+    }
 
     useEffect(() => {
         loadMails()
@@ -43,39 +49,19 @@ export function MailIndex() {
             console.log('error deleting mail', err)
         })
     }
-    // function onNewMail(){        
-    //     {setComposeMail(true)}
-    //     <Link to="/mailCompose">Add new mail</Link>
-    //     // return <Link to="mailCompose"> Add new mail</Link>
-    // }
-
-    // function onNewMail(){
-    //     <Link to={'/mailCompose'}>go there!</Link>
-    // }
-    // function onNewMail(){
-    //     {console.log('hiii!')}
-    //     <Link to="/about">wowwwww</Link> 
-    // }
 
     if (!mails) return <div>loading..</div>
     return <div className="div-main">
-        <UtilsSection/>
+        <UtilsSection />
+        <MailFilter onSetFilter={onSetFilter}/>
         <div className="main-contanier-emails">
-            <table className="wrap-mails">
-            {<MailList mails={mails} className="mail-list" onRemove={onRemove} />}
-            </table>
-        </div>
-
-        {/* <div className="left-nav">
-            <Outlet />
-            <MailFilter onSetFilter={onSetFilter} />
-            <div className="main-data">
-                <div className="left-nav">
-                    <UtilsSection />
-                </div>
-                {<MailList mails={mails} className="mail-list" onRemove={onRemove} />}
+            <div className="container-wrap-mails">
+            {!isMail && <Outlet />}
+            {isMail && <table className="wrap-mails" >
+                <MailList mails={mails} className="mail-list" onRemove={onRemove} />
+            </table>}
             </div>
-        </div> */}
+        </div>
     </div>
 }
 

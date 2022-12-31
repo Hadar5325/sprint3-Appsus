@@ -41,18 +41,6 @@ body{
     font-family: GoogleSans;
 }
 
-/* .each-mail{ */
-    /* /~ border: 10px solid rgb(162, 20, 20); ~/ */
-    /* /~ height: 10px; ~/ */
-/* } */
-/* mail list */
-/* .mail-list{ */
-    /* list-style-type: none; */
-    /* padding: 0; */
-    /* margin: 0; */
-/* } */
-/* mail layout */
-
 .main-data{
     display: grid;
     grid-template-columns: 187px auto;
@@ -103,7 +91,6 @@ body{
 
 /* New mail */
 .mail-compose{
-    background-color: antiquewhite;
     border: 1px solid black;
 }
 
@@ -129,7 +116,6 @@ body{
     grid-template-columns: 187px 1fr;
     grid-template-areas: 
     "left-nav   main-contanier-emails";
-
 }
 
 .left-nav{
@@ -162,6 +148,11 @@ body{
     justify-content: space-between;
     height: 48px;
     /* padding: 8px; */
+}
+.container-wrap-mails{
+    height: 100%;
+    width: 100%;
+
 }
 .wrap-mails{
     height: 100%;
@@ -203,3 +194,35 @@ body{
 .details{
     grid-area: details;
 }
+input[type=text]{
+    border-radius: 10px;
+    width: 15rem;
+    
+}
+.filter-mail{
+    position: absolute;
+    top:0px;
+    left: 100px;
+}
+.btn-send-mail{
+    border-radius: 50%;
+    height: 40px;
+    background-color: rgb(60, 189, 60);
+    margin: 30px;
+    color: black;
+
+}
+form{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.mail-compose input[type=text]{
+    display: block;
+    font-size: 2rem;
+    width: 90%;
+    margin: 1rem;
+    font-family: googleSans ;
+    border-radius: 2rem;
+ }

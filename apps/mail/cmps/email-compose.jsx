@@ -30,7 +30,7 @@ export function MailCompose() {
 
     }
 
-    return <section>
+    return <section className="mail-compose">
         <form onSubmit={onSaveMail}>
             <label htmlFor="to"></label>
             <input type="text"
@@ -52,9 +52,9 @@ export function MailCompose() {
                 name="body"
                 placeholder="Text-Area"
                 value={mailToAdd.body}
-                onChange={handleChange} />
+                onChange={handleChange} className="text-area"/>
             <div>
-                <button>Send mail</button>
+                <button className="btn-send-mail">Send mail</button>
                 <Link to={"/mail"}>Cancel</Link>
             </div>
         </form>
