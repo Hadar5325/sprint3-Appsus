@@ -11,13 +11,6 @@ export function MailList({ mails, onRemove }) {
     useEffect(()=>{
         console.log("from email list", numOfUnreadMails)
     }, [numOfUnreadMails])
-    // console.log(numOfUnreadMails)
-
-    // useEffect(()=>{
-    //     console.log('get new mail!')
-    // },mails)
-    console.log('mail list')
-
 
     function unReadMessage(unReadMessage, mail){
         // console.log(mail)
@@ -53,10 +46,9 @@ export function MailList({ mails, onRemove }) {
 
     // if(!readyMails) return 
     return <tbody className="mail-list">
-         {mails.map(mail => <tr className="each-mail mail-preview" key={mail.id}>
+         {mails.map(mail => <tr className="mail-preview" key={mail.id}>
             {/* {checkIsReadMail(mail.isRead)} */}
             <MailPreview mail={mail} onRemove={onRemove} unReadMessage={unReadMessage}/>
-            {/* <Link to={`/mail/${mail.id}`}>Details</Link> */}
         </tr>
         )}
     </tbody>

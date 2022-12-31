@@ -48,8 +48,6 @@ export function MailCompose() {
                 value={mailToAdd.subject}
                 onChange={handleChange}
             />
-
-
             <input type="text"
                 name="body"
                 placeholder="Text-Area"

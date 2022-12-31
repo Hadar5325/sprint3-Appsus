@@ -59,9 +59,7 @@ export function MailIndex() {
 
     if (!mails) return <div>loading..</div>
     return <div className="div-main">
-        <div className="left-nav">
-            <UtilsSection />
-        </div>
+        <UtilsSection/>
         <div className="main-contanier-emails">
             <table className="wrap-mails">
             {<MailList mails={mails} className="mail-list" onRemove={onRemove} />}

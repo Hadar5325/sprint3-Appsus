@@ -1,4 +1,6 @@
 const { Fragment } = React
+const { Link } = ReactRouterDOM
+
 export function MailPreview({ mail, onRemove, unReadMessage }) {
     const mailIsRead = (mail.isRead) ? 'true' : 'false'
     console.log('mail preview')
@@ -6,15 +8,14 @@ export function MailPreview({ mail, onRemove, unReadMessage }) {
         unReadMessage(1, mail)
     }
     return <Fragment>
-            <td>{mail.subject} </td>
-            <td>{mail.body} </td>
-            <td>{mail.subject} </td>
-
-            {/* <div>mail is read: {mailIsRead}</div>
-            <div>{mail.subject}</div>
-            <div>{mail.sentAt}</div>
-            <div>{mail.body}</div>
-            <button onClick={() => { onRemove(mail.id) }}>Remove</button> */}
-
+        <td className="subject">{mail.subject} </td>
+        <td className="body-msg">{mail.body} </td>
+        <td className="sent-at">{mail.sentAt}</td>
+        <td className="remove-btn">
+            <button onClick={() => { onRemove(mail.id) }}>Remove</button>
+        </td>
+        <td className="details">
+            <Link to={`/mail/${mail.id}`}>Details</Link>
+        </td>
     </Fragment>
 }
