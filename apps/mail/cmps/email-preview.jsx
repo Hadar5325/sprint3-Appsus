@@ -1,7 +1,7 @@
 
 export function MailPreview({ mail, onRemove, unReadMessage }) {
     const mailIsRead = (mail.isRead) ? 'true' : 'false'
-
+    console.log('mail preview')
     if (!mail.isRead) {
         unReadMessage(1, mail)
     }

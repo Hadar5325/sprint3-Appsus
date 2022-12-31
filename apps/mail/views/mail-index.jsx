@@ -19,6 +19,10 @@ export function MailIndex() {
         loadMails()
     }, [filterBy])
 
+    useEffect(()=>{
+        if(composeMail) console.log('true!')
+    },[composeMail])
+
     function loadMails() {
         mailService.query(filterBy).then(mailsToUpdate => {
             setMails(mailsToUpdate)
@@ -37,19 +41,30 @@ export function MailIndex() {
             console.log('error deleting mail', err)
         })
     }
-    function onNewMail(){
-        {console.log('hi!')}
-        
-        {setComposeMail(true)}
-        return <Link to="mail/mailCompose"> Add new mail</Link>
-    }
+    // function onNewMail(){        
+    //     {setComposeMail(true)}
+    //     <Link to="/mailCompose">Add new mail</Link>
+    //     // return <Link to="mailCompose"> Add new mail</Link>
+    // }
 
+    // function onNewMail(){
+    //     <Link to={'/mailCompose'}>go there!</Link>
+    // }
+    // function onNewMail(){
+    //     {console.log('hiii!')}
+    //     <Link to="/about">wowwwww</Link> 
+    // }
 
     if (!mails) return <div>loading..</div>
     return <div>
-        {(composeMail) && <Outlet/>}
-        
-        <button onClick={()=>{onNewMail()}}>Add New Mail </button>
+        <Outlet/>
+        {/* <Link to="/about">wowwwww</Link>  */}
+        <Link to={"/mail/mailCompose"}>wowwwww</Link> 
+
+        {/* {(composeMail) && <Outlet/>} */}
+        {/* <MailCompose /> */}
+        {/* <button onClick={()=>{onNewMail()}}>Add new Mail</button> */}
+        {/* <button onClick={()=>{onNewMail()}}>Add New Mail </button> */}
         <MailFilter onSetFilter={onSetFilter}/>
         <div className="main-data">
             <div className="left-nav">

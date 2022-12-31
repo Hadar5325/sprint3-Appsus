@@ -7,12 +7,16 @@ import { MailPreview } from "./email-preview.jsx"
 export function MailList({ mails, onRemove }) {
     // const [numOfUnreadMails, setNumOfUnreadMails] = useState(mailService.getDefaultFilter())
     const [numOfUnreadMails, setNumOfUnreadMails] = useState(0)
-
+    const [readyMails, setReadMails]= useState(false)
     useEffect(()=>{
         console.log("from email list", numOfUnreadMails)
     }, [numOfUnreadMails])
     // console.log(numOfUnreadMails)
 
+    // useEffect(()=>{
+    //     console.log('get new mail!')
+    // },mails)
+    console.log('mail list')
 
 
     function unReadMessage(unReadMessage, mail){
@@ -43,10 +47,13 @@ export function MailList({ mails, onRemove }) {
         // })
     }
 
+    // useEffect(()=>{
+    //     setReadMails(true)
+    // }, mails)
 
-
+    // if(!readyMails) return 
     return <ul className="mail-list">
-        {mails.map(mail => <li key={mail.id}>
+         {mails.map(mail => <li key={mail.id}>
             {/* {checkIsReadMail(mail.isRead)} */}
             <MailPreview mail={mail} onRemove={onRemove} unReadMessage={unReadMessage}/>
             <Link to={`/mail/${mail.id}`}>Details</Link>

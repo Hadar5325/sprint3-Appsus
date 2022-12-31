@@ -23,7 +23,7 @@ export function App() {
                 <Route path="/about" element={<About />} />
 
                 <Route path="/mail" element={<MailIndex />} >
-                    <Route path="mail/mailCompose" element={<MailCompose />}/>
+                    <Route path="/mail/mailCompose" element={<MailCompose />} />
                 </Route>
                 {/* <Route path="/mail/mailCompose" element={<MailCompose />} /> */}
 

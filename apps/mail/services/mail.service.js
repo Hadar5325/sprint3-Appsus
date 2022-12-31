@@ -10,7 +10,8 @@ export const mailService = {
     getDefaultFilter,
     remove,
     get,
-    save
+    save,
+    getEmptyMail
 }
 
 function getDefaultFilter() {
@@ -40,7 +41,6 @@ function query(filterBy) {
             // console.log(DFfilterBy)
             if (filterBy.txt) {
                 mails = mails.filter(mail => {
-                    console.log(mail.subject)
                     const mailSubject = mail.subject.toLowerCase()
                     if (mailSubject.includes(filterBy.txt)) return mail
                 })
@@ -91,4 +91,8 @@ function save(mail) {
     } else {
         return asyncStorageService.post(MAIL_KEY, mail)
     }
+}
+
+function getEmptyMail(to = '', subject = '', body = '', isRead=false, sentAt='', isCountedIfUnRead= false) {
+    return { to, subject, body,isRead, sentAt, isCountedIfUnRead  }
 }
