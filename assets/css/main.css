@@ -181,8 +181,25 @@ body{
     border-spacing: 4px;
 }
 .mail-preview{
-    display: flex;
-    justify-content:space-between;
+    display: grid;
+    grid-template-columns: 1fr 2fr repeat(3, 1fr);
+    grid-template-areas: 
+    "subject body-msg sent-at remove-btn details";
     border: 2px salmon solid;
     width: 100%;
+}
+.subject{
+    grid-area: subject;
+}
+.body-msg{
+    grid-area: body-msg;
+}
+.sent-at{
+    grid-area: sent-at;
+}
+.remove-btn{
+    grid-area: remove-btn;
+}
+.details{
+    grid-area: details;
 }
